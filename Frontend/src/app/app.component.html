@@ -1,7 +1,57 @@
-<div style="text-align:center">
-  <h1>
-    Welcome to {{ title }}!
-  </h1>
-    <app-todolist></app-todolist>
-    
-</div>
+<table>
+  <table>
+    <tr>
+      <th>Add Task</th>
+      <th><input type="text" #newTask></th>
+      <th><button (click)="onAddTask(newTask)">Add</button></th>
+    </tr>
+    <tr>
+      <td></td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td></td>
+      <td></td>
+    </tr>
+  </table>
+  <hr>
+
+  <table>
+    <table>
+      <tr>
+        <th><button (click)="showAll()">Show All</button></th>
+        <th><button (click)="completed()">Completed</button></th>
+        <th><button (click)="noCompleted()">Not Completed</button></th>
+      </tr>
+      <tr>
+        <td></td>
+        <td></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td></td>
+        <td></td>
+        <td></td>
+      </tr>
+    </table>
+    <hr>
+
+    <table>
+      <tr>
+        <th>Task Name</th>
+        <th>Status</th>
+        <th></th>
+      </tr>
+      <tr>
+        <td></td>
+        <td></td>
+        <td></td>
+      </tr>
+      <tr *ngFor="let task of tasks">
+        <td>{{task.task}}</td>
+        <td><input type="checkbox" [checked]="task.done == true?true:false" (click)="markTask(task._id)"></td>
+        <td><button id="delete" (click)="onDelete(task._id)">Delete</button></td>
+      </tr>
+    </table>
